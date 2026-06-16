@@ -30,7 +30,7 @@ This notebook:
 
 cells.append(md("## 1. Setup — clone repo & install deps"))
 cells.append(code("""# EDIT THIS to your repo URL after you push it to GitHub.
-REPO_URL = "https://github.com/<your-username>/fer2013-facial-expression.git"
+REPO_URL = "https://github.com/gega-s/fer2013-facial-expression.git"
 REPO_DIR = "fer2013-facial-expression"
 
 import os
