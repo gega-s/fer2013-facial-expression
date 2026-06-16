@@ -1,0 +1,39 @@
+# W&B hyperparameter sweep for the RegularizedCNN.
+# Run with:
+#   wandb sweep configs/sweep_regularized_cnn.yaml
+#   wandb agent <entity>/<project>/<sweep_id>
+#
+# Bayesian search over the knobs that matter most for generalization.
+program: sweep_train.py
+method: bayes
+metric:
+  name: val/acc
+  goal: maximize
+parameters:
+  model:
+    value: regularized_cnn
+  augment:
+    value: true
+  epochs:
+    value: 40
+  lr:
+    distribution: log_uniform_values
+    min: 0.0001
+    max: 0.005
+  batch_size:
+    values: [64, 128, 256]
+  weight_decay:
+    distribution: log_uniform_values
+    min: 0.00001
+    max: 0.001
+  dropout:
+    values: [0.2, 0.3, 0.4, 0.5]
+  optimizer:
+    values: [adam, adamw, sgd]
+  label_smoothing:
+    values: [0.0, 0.05, 0.1]
+  scheduler:
+    values: [none, cosine, plateau]
+early_terminate:
+  type: hyperband
+  min_iter: 8

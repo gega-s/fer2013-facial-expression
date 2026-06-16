@@ -1,0 +1,17 @@
+# Experiment 1 — TinyCNN (2 conv blocks, ~0.6M params).
+# Purpose: first real CNN. Confirms convolutions beat the linear baseline, but
+# low capacity should make it plateau (mild underfitting relative to deeper nets).
+model: tiny_cnn
+run_name: 01_tiny_cnn
+group: from_scratch
+notes: "2 conv blocks, no regularization. Low-capacity sanity model."
+tags: [cnn, small]
+
+batch_size: 128
+augment: false
+epochs: 30
+lr: 0.001
+optimizer: adam
+weight_decay: 0.0
+scheduler: none
+seed: 42

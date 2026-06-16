@@ -1,0 +1,23 @@
+# Experiment 3 — RegularizedCNN: same depth as exp 2 but BN + Dropout + aug.
+# Purpose: directly "fix" the overfitting from experiment 2. BatchNorm
+# stabilizes/▲ speeds training, Dropout + data augmentation + weight decay close
+# the generalization gap. This is our strongest from-scratch model (~65-68% test).
+model: regularized_cnn
+run_name: 03_regularized_cnn
+group: from_scratch
+notes: "Deep CNN + BatchNorm + Dropout + augmentation + weight decay + cosine LR."
+tags: [cnn, deep, regularized, best_scratch]
+model_kwargs:
+  dropout: 0.4
+
+batch_size: 128
+augment: true           # the key change vs experiment 2
+epochs: 60
+lr: 0.001
+optimizer: adam
+weight_decay: 0.0001
+scheduler: cosine
+label_smoothing: 0.05
+grad_clip: 5.0
+early_stop_patience: 12
+seed: 42

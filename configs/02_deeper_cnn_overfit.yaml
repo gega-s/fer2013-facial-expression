@@ -1,0 +1,19 @@
+# Experiment 2 — DeeperCNN with NO regularization (the OVERFITTING demo).
+# Purpose: 4 conv blocks + big FC head, no BN / no dropout / no augmentation.
+# High capacity + zero regularization => train acc shoots toward ~99% while
+# val acc stalls, producing a large generalization gap. This run exists to be
+# analyzed as the textbook overfitting case (watch `generalization_gap`).
+model: deeper_cnn
+run_name: 02_deeper_cnn_overfit
+group: from_scratch
+notes: "Deep CNN, no regularization. Intentionally overfits — large train/val gap."
+tags: [cnn, deep, overfit]
+
+batch_size: 128
+augment: false          # deliberately OFF to maximize overfitting
+epochs: 40
+lr: 0.001
+optimizer: adam
+weight_decay: 0.0       # no L2 either
+scheduler: none
+seed: 42

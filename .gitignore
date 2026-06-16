@@ -1,0 +1,28 @@
+# Data — never commit the dataset
+data/
+*.csv
+*.tar.gz
+*.zip
+
+# Kaggle / W&B credentials
+kaggle.json
+.netrc
+wandb/
+*.pth
+*.pt
+checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.python-version
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

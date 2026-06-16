@@ -1,0 +1,17 @@
+# Experiment 0 — Linear baseline (logistic regression on raw pixels).
+# Purpose: establish the absolute floor. A single Linear layer cannot capture
+# spatial structure, so we EXPECT heavy UNDERFITTING (~30-35% val acc).
+model: linear
+run_name: 00_linear_baseline
+group: baselines
+notes: "Single linear layer on flattened pixels. Expected to underfit badly."
+tags: [baseline, underfit, linear]
+
+batch_size: 128
+augment: false
+epochs: 25
+lr: 0.001
+optimizer: adam
+weight_decay: 0.0
+scheduler: none
+seed: 42

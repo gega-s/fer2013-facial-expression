@@ -1,0 +1,24 @@
+# Experiment 4 — ResNet18 adapted to 1-channel 48x48 (transfer learning).
+# Purpose: test whether a modern residual architecture beats our hand-built CNN.
+# Stem is modified (3x3 stride-1 conv, no early maxpool) so we keep spatial
+# detail on small faces. `pretrained: true` loads ImageNet weights; flip to
+# false to compare training-from-scratch.
+model: resnet18
+run_name: 04_resnet18_pretrained
+group: transfer_learning
+notes: "torchvision ResNet18, 1-ch stem, ImageNet init, augmentation + cosine LR."
+tags: [resnet, transfer, deep]
+model_kwargs:
+  pretrained: true
+
+batch_size: 128
+augment: true
+epochs: 50
+lr: 0.0005
+optimizer: adamw
+weight_decay: 0.0005
+scheduler: cosine
+label_smoothing: 0.05
+grad_clip: 5.0
+early_stop_patience: 10
+seed: 42
